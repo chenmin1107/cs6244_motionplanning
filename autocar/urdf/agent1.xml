@@ -1,0 +1,13 @@
+<robot name = "agent1">
+	<link name = "robot_1/base_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://intersectionNav/urdf/SCOT_bin.stl" scale = "1.0 1.0 1.0" />
+			</geometry>
+			<origin rpy="0 0 1.5707963268" xyz="2.5 -1.0 0.0"/>
+			<material name="green">
+				<color rgba="0.4 0.7 0.8 1"/>
+			</material>
+		</visual>
+	</link>
+</robot>

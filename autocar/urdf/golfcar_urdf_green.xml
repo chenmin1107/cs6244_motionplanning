@@ -1,0 +1,13 @@
+<robot name = "golfcar">
+	<link name = "base_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://local_map/urdf/golfcart.STL" scale = "0.025 0.025 0.025" />
+			</geometry>
+			<origin rpy="0 0 3.1415926" xyz="1.8 0.6 0"/>
+			<material name="green">
+				<color rgba="0.1 0.8 0.1 1"/>
+			</material>
+		</visual>
+	</link>
+</robot>

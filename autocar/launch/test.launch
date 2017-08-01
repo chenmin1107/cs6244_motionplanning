@@ -1,0 +1,159 @@
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find autocar)/maps/world/utown_plannar.yaml">
+    <param name="frame_id" value="/map" />
+  </node>
+
+  <node name="stageros" pkg="stage_ros" type="stageros" args="-g $(find autocar)/maps/world/utown_plannar_multi_tjunc.world" respawn="false" output="screen">
+    <param name="base_watchdog_timeout" value="0.2"/>
+  </node>
+  <!--<node name="stageros" pkg="stage_ros" type="stageros" args="$(find CP_Simulation)/World/utown_tjunc_firstpersonview.world" respawn="false" output="screen">-->
+    <!--<param name="base_watchdog_timeout" value="0.2"/>-->
+  <!--</node>-->
+
+  <node name="fake_localization_0" pkg="fake_localization" type="fake_localization" respawn="false" ns="/robot_0">
+    <param name="odom_frame_id" value="/robot_0/odom"/>
+    <param name="base_frame_id" value="/robot_0/base_link"/>
+  </node>
+
+  <node name="fake_localization_1" pkg="fake_localization" type="fake_localization" respawn="false" ns="/robot_1">
+    <param name="odom_frame_id" value="/robot_1/odom"/>
+    <param name="base_frame_id" value="/robot_1/base_link"/>
+  </node>
+
+  <!--<node name="fake_localization_2" pkg="fake_localization" type="fake_localization" respawn="false" ns="/robot_2">
+    <param name="odom_frame_id" value="/robot_2/odom"/>
+    <param name="base_frame_id" value="/robot_2/base_link"/>
+  </node>-->
+
+  <!-- publish the path of the car -->
+  <!--<node pkg="ipma" type="mainPathPublisher" name="mainPathPublisher_robot_0" ns="robot_0" respawn="false" output="screen">-->
+      <!--<param name="pathToData" value="$(find ipma)/path/Tjunction_Straight.txt"/>-->
+  <!--</node>-->
+  <!--<node pkg="ipma" type="mainPathPublisher" name="mainPathPublisher_robot_2" ns="robot_2" respawn="false" output="screen">
+    <param name="pathToData" value="$(find ipma)/path/Tjunction_Straight_Back.txt"/>
+  </node>-->
+  <!--<node pkg="ipma" type="mainPathPublisher" name="mainPathPublisher_robot_1" ns="robot_1" respawn="false" output="screen">-->
+    <!--[><param name="pathToData" value="$(find ipma)/path/Tjunction_Cross2.txt"/><]-->
+    <!--<param name="pathToData" value="$(find ipma)/path/Tjunction_Cross.txt"/>-->
+  <!--</node>-->
+
+  <!--<node pkg="golfcar_ppc" type="purepursuit_controller" name="purepursuitController_0" ns="robot_0" >-->
+    <!--<param name="global_frame" value="/map" />-->
+    <!--<param name="robot_frame" value="/robot_0/base_link" />-->
+    <!--<param name="min_lookahead" value="0.5" />-->
+    <!--<param name="frequency" value="30" />-->
+    <!--<param name="anchor_pt_dist" value="1.1925" />-->
+    <!--<param name="car_length" value="2.385" />-->
+    <!--<param name="max_pose_delay" value="0.3" />-->
+  <!--</node>-->
+
+  <!--<node pkg="golfcar_ppc" type="purepursuit_controller" name="purepursuitController_1" ns="robot_1" >-->
+    <!--<param name="global_frame" value="/map" />-->
+    <!--<param name="robot_frame" value="/robot_1/base_link" />-->
+    <!--<param name="min_lookahead" value="0.5" />-->
+    <!--<param name="frequency" value="30" />-->
+    <!--<param name="anchor_pt_dist" value="1.1925" />-->
+    <!--<param name="car_length" value="2.385" />-->
+    <!--<param name="max_pose_delay" value="0.3" />-->
+  <!--</node>-->
+
+  <!--<node pkg="golfcar_ppc" type="purepursuit_controller" name="purepursuitController_2" ns="robot_2" >
+    <param name="global_frame" value="/map" />
+    <param name="robot_frame" value="/robot_2/base_link" />
+    <param name="min_lookahead" value="0.5" />
+    <param name="frequency" value="30" />
+    <param name="anchor_pt_dist" value="1.1925" />
+    <param name="car_length" value="2.385" />
+    <param name="max_pose_delay" value="0.3" />
+  </node>-->
+
+  <!-- <node name="PathPublisher_0" pkg="ipma" type="pathPublisher.py" args="$(find ipma)/path/Tjunction_Straight.txt" respawn="false" output="screen">
+    <param name="PathToFile" value="$(find ipma)/path/Tjunction_Straight.txt"/>
+  </node> -->
+
+  <!-- teleop control the robot -->
+  <node pkg="autocar" type="controller.py" name="controller0" respawn="false" output="screen" ns="/robot_0" >
+    <param name="hz" type="int" value="10" />
+    <param name="max_speed" type="double" value="5" />
+    <param name="min_speed" type="double" value="-3" />
+  </node>
+
+  <node pkg="autocar" type="teleop.py" name="teleop0" respawn="false" output="screen" ns="/robot_0" >
+    <param name="hz" type="int" value="10" />
+    <param name="acc" type="double" value="1" />
+    <param name="yaw" type="double" value="0.25" />
+  </node>
+  <!--<node pkg="ipma" type="init_AgTeleop.py" name="teleop" respawn="false" output="screen" >-->
+    <!--<param name="hz" type="int" value="10" />-->
+  <!--</node>-->
+
+  <!--<node pkg="joy" type="joy_node" name="joy0" ns="robot_0" respawn="false" output="screen" >-->
+      <!--<param name="dev" type="str" value="/dev/input/js0" />-->
+  <!--</node>-->
+
+  <!--<node pkg="joy" type="joy_node" name="joy1" ns="robot_1" respawn="false" output="screen" >-->
+      <!--<param name="dev" type="str" value="/dev/input/js1" />-->
+  <!--</node>-->
+
+  <!--<node pkg="ipma" type="joyTeleop.py" name="teleop" respawn="false" output="screen" >-->
+      <!--<param name="hz" type="int" value="10" />-->
+  <!--</node>-->
+
+  <!-- robot speed advisor -->
+  <!--<node pkg="ipma" type="mainHSpdAdvisor" name="hspdAdvisor_0" ns="robot_0" respawn="false" output="screen" >-->
+    <!--<param name="type_agent" value="0"/>-->
+  <!--</node>-->
+  <!--<node pkg="ipma" type="mainHSpdAdvisor" name="hspdAdvisor_1" ns="robot_1" respawn="false" output="screen" >-->
+    <!--<param name="type_agent" value="1"/>-->
+  <!--</node>-->
+  <!--<node pkg="ipma" type="mainSpdAdvisor" name="spdAdvisor_2" ns="robot_2" respawn="false" output="screen" >
+    <param name="type_agent" value="1"/>
+  </node>-->
+
+  <!-- speed controller -->
+  <!--<node pkg="ipma" type="mainSpdController" name="spdController_0" ns="robot_0" respawn="false" output="screen" />-->
+  <!--<node pkg="ipma" type="mainSpdController" name="spdController_1" ns="robot_1" respawn="false" output="screen" />-->
+  <!--<node pkg="ipma" type="mainSpdController" name="spdController_2" ns="robot_2" respawn="false" output="screen" />-->
+
+  <!-- display robots in rviz -->
+  <group ns="robot_0">
+    <include file="$(find autocar)/urdf/display_redCar.launch"/>
+    <param name="tf_prefix" value="robot_0" />
+  </group>
+  
+  <group ns="robot_1">
+    <include file="$(find autocar)/urdf/display_greenCar.launch"/>
+    <param name="tf_prefix" value="robot_1" />
+  </group>
+  
+  <!--<group ns="robot_2">
+    <include file="$(find ipma)/urdf/display_blueCar.launch"/>
+    <param name="tf_prefix" value="robot_2" />
+  </group>-->
+
+  <!-- display some markers in rviz to mark stop position -->
+  <!--<node pkg="ipma" type="start_stop.py" name="stop_marker_pub" respawn="false" output="screen" />-->
+
+  <!--<node pkg="ipma" type="init_speed.py" name="init_speed" respawn="false" output="screen" >-->
+      <!--<param name="num_cars" value="2" />-->
+      <!--<param name="dspeed_0" value="5" />-->
+      <!--<param name="dspeed_1" value="0" />-->
+  <!--</node>-->
+
+  <!--<node pkg="CP_Simulation" type="ipma_user_view.py" name="user_view_0" ns="robot_0" respawn="false" output="screen">-->
+      <!--<param name="robot_id" value="0" />-->
+  <!--</node>-->
+
+  <!--<node pkg="CP_Simulation" type="ipma_user_view.py" name="user_view_1" ns="robot_1" respawn="false" output="screen">-->
+      <!--<param name="robot_id" value="1" />-->
+  <!--</node>-->
+
+  <!-- record data for training purpose -->
+  <!--<node pkg="rosbag" type="record" name="rosbag_record_pose" args="-o $(find ipma)/data/bags/single_agent/tjunc/group2/ziquan_min /robot_0/base_pose_ground_truth /robot_1/base_pose_ground_truth /robot_0/advised_conAction /robot_1/advised_conAction /status_init"/> -->
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find autocar)/maps/rviz_settings/cp_intention_aware.rviz"/> 
+  
+</launch>

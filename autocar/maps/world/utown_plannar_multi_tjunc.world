@@ -1,0 +1,149 @@
+define block model
+(
+  size [2.385 1.200 1.000]
+  gui_nose 0
+)
+
+define topurg ranger
+(
+  sensor(
+  range [0.0 80.0]
+  fov 180
+  samples 360
+  )
+  # generic model properties
+  color "black"
+  size [ 0.050 0.050 0.100 ]
+)
+
+define gc1 position
+(
+  #size [0.65 0.65 0.25]
+  #origin [-0.05 0 0 0]
+  size [2.385 1.200 1.000]
+  
+  origin [0.792 0.000 0.000 0.000]
+  gui_nose 1
+  drive "car"
+  localization "gps"
+  #odom_error [0.01 0.05 0.01 0.02 0.01 0.02]
+
+  topurg(pose [1.985 0.000 -0.500 0.000])
+
+  velocity_bounds [-10000 10000 -1 1 -1 1 -90 90 ]					
+  acceleration_bounds [-10000 10000 -1 1 -1 1 -90 90]
+)
+
+define gc2 position
+(
+  #size [0.65 0.65 0.25]
+  #origin [-0.05 0 0 0]
+  size [2.385 1.200 1.000]
+  
+  origin [0.792 0.000 0.000 0.000]
+  gui_nose 1
+  drive "car"
+  localization "gps"
+  #odom_error [0.01 0.05 0.01 0.02 0.01 0.02]
+
+  topurg(pose [1.985 0.000 -0.500 0.000])
+  
+  velocity_bounds [-10000 10000 -1 1 -1 1 -90 90 ]					
+  acceleration_bounds [-10000 10000 -1 1 -1 1 -90 90]
+)
+
+define gc3 position
+(
+  #size [0.65 0.65 0.25]
+  #origin [-0.05 0 0 0]
+  size [2.385 1.200 1.000]
+  
+  origin [0.792 0.000 0.000 0.000]
+  gui_nose 1
+  drive "car"
+  localization "gps"
+  #odom_error [0.01 0.05 0.01 0.02 0.01 0.02]
+
+  topurg(pose [1.985 0.000 -0.500 0.000])
+
+  velocity_bounds [-10000 10000 -1 1 -1 1 -90 90 ]					
+  acceleration_bounds [-10000 10000 -1 1 -1 1 -90 90]
+)
+
+define gc4 position
+(
+  #size [0.65 0.65 0.25]
+  #origin [-0.05 0 0 0]
+  size [2.385 1.200 1.000]
+
+  velocity [ 1.0 0.0 0.0 0.0 ]
+  origin [0.792 0.000 0.000 0.000]
+  gui_nose 1
+  drive "car"
+  localization "gps"
+  #odom_error [0.01 0.05 0.01 0.02 0.01 0.02]
+
+  topurg(pose [1.985 0.000 -0.500 0.000])
+
+  velocity_bounds [-10000 10000 -1 1 -1 1 -90 90 ]					
+  acceleration_bounds [-10000 10000 -1 1 -1 1 -90 90]
+)
+
+define floorplan model
+(
+  # sombre, sensible, artistic
+  color "gray30"
+
+  # most maps will need a bounding box
+  boundary 1
+
+  gui_nose 0
+  gui_grid 0
+#gui_movemask 0
+  gui_outline 0
+  gripper_return 0
+  fiducial_return 0
+  laser_return 1
+)
+
+# set the resolution of the underlying raytrace model in meters
+resolution 0.01
+
+interval_sim 100  # simulation timestep in milliseconds
+#interval_real 100  # real-time interval between simulation updates in milliseconds 
+
+window
+( 
+  size [ 357 572 ] 
+  center [143.242 97.300] 
+#  center [-168.899 86.858]
+#rotate [ 0.000 -1.560 ]
+  rotate [ 0.000 -407.500 ]
+  scale 3.139 
+)
+
+# load an environment bitmap
+floorplan
+( 
+  name "willow"
+  bitmap "utown_plannar.png"
+  # bitmap "utown_plannar_large4.png"
+  size [220.800 238.400 1.000]
+#  pose [-110.400 119.200 0.000 90.000]
+#size [238.400 220.800 1.000]
+pose [110.488 119.303 0.000 0.000]
+)
+
+# throw in a robot
+gc1( pose [108.372317277 107.515159253 0.000 42.873] name "gc1" color "red")
+gc2( pose [123.083 134.196 0.000 -3.915] name "gc2" color "green")
+#gc3( pose [161.785 147.256 0.000 -140.66] name "gc3" color "blue")
+
+#gc1( pose [136.580 127.088 0.000 -144.979] name "gc1" color "red")
+#gc2( pose [130.100 121.836 0.000 -145.122] name "gc2" color "green")
+#gc1( pose [99.913 97.131 0.000 52.672] name "gc1" color "red")
+#gc2( pose [106.951 126.328 0.000 66.94] name "gc2" color "blue")
+#gc3( pose [130.100 121.836 0.000 -145.122] name "gc3" color "green")
+#block( pose [ 122.843 69.809 0.000 0.000 ] color "yellow")
+#block( pose [ 118.794 100.472 0.000 40.107 ] color "yellow")
+#block( pose [ 125.689 63.002 0.000 28.648 ] color "yellow")

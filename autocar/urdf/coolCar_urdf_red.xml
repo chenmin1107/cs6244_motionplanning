@@ -1,0 +1,13 @@
+<robot name = "audi">
+	<link name = "base_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://intersectionNav/urdf/cool_car.STL" scale = "0.01 0.01 0.01" />
+			</geometry>
+			<origin rpy="1.5707963268 0 3.1415926" xyz="0.0 0.0 0.2"/>
+			<material name="green">
+				<color rgba="0.8 0.1 0.1 1"/>
+			</material>
+		</visual>
+	</link>
+</robot>
