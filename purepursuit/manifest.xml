@@ -1,0 +1,31 @@
+<package>
+  <description brief="purepursuit">
+
+     purepursuit
+
+  </description>
+  <author>min</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/purepursuit</url>
+  <depend package="std_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="roslib"/>
+  <depend package="rospy"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="nav_core"/>
+  <depend package="roscpp"/>
+  <depend package="pluginlib"/>
+  <depend package="costmap_2d"/>
+  <depend package="nav_core"/>
+  <depend package="base_local_planner"/>
+  <depend package="fmutil"/>
+  <depend package="pnc_msgs"/>
+  <!--<export>-->
+    <!--<cpp cflags="-I${prefix}/include -I${prefix}/msg/cpp" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lbase_local_planner -lgolfcar_ppc" />-->
+    <!--<nav_core plugin="${prefix}/blp_plugin.xml" />-->
+  <!--</export>-->
+</package>
+
+
