@@ -34,6 +34,9 @@ class Teleop:
         self.yaw = rospy.get_param('~yaw', 0.25)
 
         self.robot_pub = rospy.Publisher('control_command', controlCommand, queue_size=1)
+
+        self.path_record_pub = rospy.Publisher('record_state', \
+                RecordState, queue_size=1)
         
         print "Usage: \n \
                 up arrow: accelerate \n \
@@ -58,9 +61,23 @@ class Teleop:
                 yaw = self.yaw
             elif(keys[pygame.K_RIGHT]):
                 yaw = -self.yaw
+            if(keys[pygame.K_r]):
+                state = 1
+                self.send_record_state(state)
+            elif(keys[pygame.K_q]):
+                state = 2
+                self.send_record_state(state)
+            elif(keys[pygame.K_p]):
+                state = 0
+                self.send_record_state(state)
 
             self.send_control(acc, yaw)
             self.rate.sleep()  
+
+    def send_record_state(self, state):
+        msg = RecordState()
+        msg.state = state
+        self.path_record_pub.publish(msg)
 
     def send_control(self, vel, yaw):
         msg = controlCommand()

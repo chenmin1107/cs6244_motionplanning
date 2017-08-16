@@ -20,17 +20,55 @@
     <param name="base_frame_id" value="/robot_1/base_link"/>
   </node>
 
+  <node pkg="Steering_Control" type="SteerCtr" name="SteerCtr_0" ns="robot_0" >
+    <param name="global_frame" value="/map" />
+    <param name="base_frame" value="/robot_0/base_link" />
+    <param name="look_ahead_dist" value="2.0" />
+    <param name="car_length" value="2.385" />
+  </node>
 
-  <!-- record the path -->
-  <node pkg="autocar" type="path_generator.py" name="pathGen_0" respawn="false" output="screen" ns="/robot_0" >
-    <param name="hz" type="int" value="5" />
+  <node pkg="Steering_Control" type="SteerCtr" name="SteerCtr_1" ns="robot_1" >
+    <param name="global_frame" value="/map" />
+    <param name="base_frame" value="/robot_1/base_link" />
+    <param name="look_ahead_dist" value="2.0" />
+    <param name="car_length" value="2.385" />
+  </node>
+
+  <!-- publish the path -->
+  <node pkg="autocar" type="path_pub.py" name="pathPub_0" respawn="false" output="screen" ns="/robot_0" >
+    <param name="hz" type="int" value="1" />
     <param name="path2file" type="str" value="$(find autocar)/path/test0.txt" />
   </node>
   
-  <!-- record the path -->
-  <node pkg="autocar" type="path_generator.py" name="pathGen_1" respawn="false" output="screen" ns="/robot_1" >
+  <!-- publish the speed -->
+  <node pkg="autocar" type="speed_advisor.py" name="speedAdv_0" respawn="false" output="screen" ns="/robot_0" >
     <param name="hz" type="int" value="5" />
+    <param name="speed_type" type="str" value="constant" />
+    <param name="mean_speed" type="double" value="2.0" />
+  </node>
+
+  <!-- publish the control -->
+  <node pkg="autocar" type="purePursuit.py" name="purePub_0" respawn="false" output="screen" ns="/robot_0" >
+    <param name="hz" type="int" value="5" />
+  </node>
+
+
+  <!-- publish the path -->
+  <node pkg="autocar" type="path_pub.py" name="pathPub_1" respawn="false" output="screen" ns="/robot_1" >
+    <param name="hz" type="int" value="1" />
     <param name="path2file" type="str" value="$(find autocar)/path/test1.txt" />
+  </node>
+  
+  <!-- publish the speed -->
+  <node pkg="autocar" type="speed_advisor.py" name="speedAdv_1" respawn="false" output="screen" ns="/robot_1" >
+    <param name="hz" type="int" value="5" />
+    <param name="speed_type" type="str" value="constant" />
+    <param name="mean_speed" type="double" value="2.0" />
+  </node>
+
+  <!-- publish the control -->
+  <node pkg="autocar" type="purePursuit.py" name="purePub_1" respawn="false" output="screen" ns="/robot_1" >
+    <param name="hz" type="int" value="5" />
   </node>
 
 
@@ -47,11 +85,11 @@
     <param name="min_speed" type="double" value="-3" />
   </node>
 
-  <node pkg="autocar" type="teleop.py" name="teleop_0" respawn="false" output="screen" ns="/robot_0" >
-    <param name="hz" type="int" value="10" />
-    <param name="acc" type="double" value="1" />
-    <param name="yaw" type="double" value="0.25" />
-  </node>
+  <!--<node pkg="autocar" type="teleop.py" name="teleop_0" respawn="false" output="screen" ns="/robot_0" >-->
+    <!--<param name="hz" type="int" value="10" />-->
+    <!--<param name="acc" type="double" value="1" />-->
+    <!--<param name="yaw" type="double" value="0.25" />-->
+  <!--</node>-->
 
   <!--<node pkg="autocar" type="teleop.py" name="teleop_1" respawn="false" output="screen" ns="/robot_1" >-->
     <!--<param name="hz" type="int" value="10" />-->

@@ -10,12 +10,12 @@
 import  os  
 import  sys  
 import  tty, termios  
-import roslib; roslib.load_manifest('ipma')  
+import roslib; 
+# roslib.load_manifest('ipma')  
 import rospy 
 import pygame 
 from pygame.locals import * 
 from std_msgs.msg import String  
-from ipma.msg import advisedAction
 
 # global variables topic to be published
 adAct_robot0 = advisedAction()

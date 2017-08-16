@@ -1,0 +1,25 @@
+<package>
+  <description brief="Steering_Control">
+
+     Steering_Control
+
+  </description>
+  <author>LIUWLZ</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/Steering_Control</url>
+  <depend package="roscpp"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="nav_msgs"/>
+  <depend package="tf"/>
+  <!--depend package="pnc_msgs"/-->
+  <depend package="MPAVUtil"/>
+  
+  <export>
+  	<cpp cflags="-I${prefix}/include" lflags="-L${prefix}/lib -Wl,-rpath,${prefix}/lib -lSteering_Control"/>
+  </export>
+
+</package>
+
+
