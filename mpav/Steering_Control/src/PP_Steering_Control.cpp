@@ -26,7 +26,6 @@ namespace Control {
 
 	PPSteeringCtr::
 	~PPSteeringCtr(){
-
 	}
 
 	void
