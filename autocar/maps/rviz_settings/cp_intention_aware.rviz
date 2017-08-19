@@ -6,7 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Path4
+        - /TF1/Frames1
+        - /TF1/Tree1
+        - /Path2
         - /MarkerArray2
         - /MarkerArray2/Namespaces1
         - /MarkerArray3
@@ -65,7 +67,7 @@ Visualization Manager:
       Cell Size: 1
       Class: rviz/Grid
       Color: 255; 0; 0
-      Enabled: true
+      Enabled: false
       Line Style:
         Line Width: 0.03
         Value: Lines
@@ -78,12 +80,12 @@ Visualization Manager:
       Plane: XY
       Plane Cell Count: 1
       Reference Frame: robot_0/base_link
-      Value: true
+      Value: false
     - Alpha: 0.5
       Cell Size: 1
       Class: rviz/Grid
       Color: 0; 255; 0
-      Enabled: true
+      Enabled: false
       Line Style:
         Line Width: 0.03
         Value: Lines
@@ -96,12 +98,12 @@ Visualization Manager:
       Plane: XY
       Plane Cell Count: 1
       Reference Frame: robot_1/base_link
-      Value: true
+      Value: false
     - Alpha: 0.5
       Cell Size: 1
       Class: rviz/Grid
       Color: 0; 0; 255
-      Enabled: true
+      Enabled: false
       Line Style:
         Line Width: 0.03
         Value: Lines
@@ -114,7 +116,7 @@ Visualization Manager:
       Plane: XY
       Plane Cell Count: 1
       Reference Frame: robot_2/base_link
-      Value: true
+      Value: false
     - Class: rviz/TF
       Enabled: true
       Frame Timeout: 15
@@ -138,7 +140,7 @@ Visualization Manager:
           Value: true
         robot_1/odom:
           Value: true
-      Marker Scale: 1
+      Marker Scale: 5
       Name: TF
       Show Arrows: true
       Show Axes: true
@@ -251,7 +253,7 @@ Visualization Manager:
       Buffer Length: 1
       Class: rviz/Path
       Color: 255; 0; 0
-      Enabled: false
+      Enabled: true
       Head Diameter: 0.3
       Head Length: 0.2
       Length: 0.3
@@ -266,14 +268,14 @@ Visualization Manager:
       Radius: 0.03
       Shaft Diameter: 0.1
       Shaft Length: 0.1
-      Topic: /robot_0/route_plan
+      Topic: /robot_0/pp_path
       Unreliable: false
-      Value: false
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
       Color: 25; 255; 0
-      Enabled: false
+      Enabled: true
       Head Diameter: 0.3
       Head Length: 0.2
       Length: 0.3
@@ -288,9 +290,9 @@ Visualization Manager:
       Radius: 0.03
       Shaft Diameter: 0.1
       Shaft Length: 0.1
-      Topic: /robot_1/route_plan
+      Topic: /robot_1/pp_path
       Unreliable: false
-      Value: false
+      Value: true
     - Alpha: 1
       Buffer Length: 1
       Class: rviz/Path
@@ -341,7 +343,7 @@ Visualization Manager:
       Buffer Length: 1
       Class: rviz/Path
       Color: 255; 170; 0
-      Enabled: true
+      Enabled: false
       Head Diameter: 0.3
       Head Length: 0.2
       Length: 0.3
@@ -358,7 +360,7 @@ Visualization Manager:
       Shaft Length: 0.1
       Topic: /committed_path
       Unreliable: false
-      Value: true
+      Value: false
     - Alpha: 0.2
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -692,22 +694,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 69.015
+      Distance: 42.3013
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 119.976
-        Y: 147.31
-        Z: -3.29611
+        X: 139.021
+        Y: 143.393
+        Z: -6.19007
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.264797
+      Pitch: 0.444797
       Target Frame: map
       Value: Orbit (rviz)
-      Yaw: 4.76318
+      Yaw: 4.61817
     Saved: ~
 Window Geometry:
   Displays:

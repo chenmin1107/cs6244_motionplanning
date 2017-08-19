@@ -42,14 +42,14 @@
   
   <!-- publish the speed -->
   <node pkg="autocar" type="speed_advisor.py" name="speedAdv_0" respawn="false" output="screen" ns="/robot_0" >
-    <param name="hz" type="int" value="5" />
+    <param name="hz" type="int" value="10" />
     <param name="speed_type" type="str" value="constant" />
     <param name="mean_speed" type="double" value="2.0" />
   </node>
 
   <!-- publish the control -->
   <node pkg="autocar" type="purePursuit.py" name="purePub_0" respawn="false" output="screen" ns="/robot_0" >
-    <param name="hz" type="int" value="5" />
+    <param name="hz" type="int" value="10" />
   </node>
 
 
@@ -61,14 +61,14 @@
   
   <!-- publish the speed -->
   <node pkg="autocar" type="speed_advisor.py" name="speedAdv_1" respawn="false" output="screen" ns="/robot_1" >
-    <param name="hz" type="int" value="5" />
+    <param name="hz" type="int" value="10" />
     <param name="speed_type" type="str" value="constant" />
     <param name="mean_speed" type="double" value="2.0" />
   </node>
 
   <!-- publish the control -->
   <node pkg="autocar" type="purePursuit.py" name="purePub_1" respawn="false" output="screen" ns="/robot_1" >
-    <param name="hz" type="int" value="5" />
+    <param name="hz" type="int" value="10" />
   </node>
 
 
