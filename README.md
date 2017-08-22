@@ -20,7 +20,7 @@ of you who knows linux well to help you.
 
 ### 2. Install ROS indigo (only supported by Ubuntu 14.04 and Ubuntu 13.10)
 
-#### install
+#### Install
 Note that our simulator runs in ROS indigo. Please make sure you choose the correct version.
 
 The following link gives you detailed instructions on how to install ROS indigo on Ubuntu.
@@ -28,13 +28,13 @@ The following link gives you detailed instructions on how to install ROS indigo 
 
 http://wiki.ros.org/indigo/Installation/Ubuntu
 
-#### tutorials
+#### Tutorials
 If you are new to ROS, I suggest you go through a quick tutorial on the website
 before you dig into the simulator.
 
 http://wiki.ros.org/ROS/Tutorials#ROS_Tutorials
 
-#### rosbuild or catkin ?
+#### Rosbuild or catkin ?
 Our simulator follows rosbuild, so please choose the right version when you go through 
 the tutorial.
 
@@ -48,15 +48,13 @@ You can do it as follows:
 
 1. cd ~/
 
-2. vim .bashrc
+2. vim .bashrc (or whatever editor you like)
 
 3. add the follwing line at the end of your .bashrc file
 
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:<your path to>/cs6244_motionplanning/
 
-4. Then,
-
-source ~/.bashrc
+4. source ~/.bashrc
 
 ### 5. List of content and build the packages
 
@@ -64,8 +62,9 @@ source ~/.bashrc
 
 This is the package you will work on. You need to
 
-cd autocar/
-rosmake
+1. cd autocar/
+
+2. rosmake
 
 This will build the package for you.
 
@@ -74,14 +73,14 @@ This will build the package for you.
 This package provides some basic functionalities 
 for the simulator, and you do not have worry about it. All you need to do is 
 
-cd mpav/MPAVUtil/
+1. cd mpav/MPAVUtil/
 
-rosmake
+2. rosmake
 
 
-cd mpav/Steering_Control/
+3. cd mpav/Steering_Control/
 
-rosmake
+4. rosmake
 
 
 ### 6. Simple task to try
