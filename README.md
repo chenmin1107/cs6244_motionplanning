@@ -2,10 +2,10 @@
 
 Autonomous driving simulator for cs6244 course project
 
-## How to set up
+## How to set up the simulator
 (Note: the simulator has only been tested in the following system
-setup. There is no guarantee it will work in other versions of systems.
-To avoid any unecessary trouble, I suggest you to strictly follow the instructions
+settings. There is no guarantee that it will work in other versions of systems.
+To avoid any trouble, I suggest you to strictly follow the instructions
 below.)
 
 ### 1. Install Ubuntu 14.04 (Recommended)
@@ -13,10 +13,12 @@ below.)
 The following tutorial gives you an example on how to install Ubuntu along with Windows.
 
 http://www.everydaylinuxuser.com/2015/11/how-to-install-ubuntu-linux-alongside.html
+(This tutorial has been updated for Ubuntu 16.04, but the steps are the same for 14.04)
 
-You can always Google to find more informations on this.
+In addition, you can always Google to find more informations on this, or ask a friend
+of you who knows linux well to help you.
 
-### 2. Install ROS indigo (Supported only by Ubuntu 14.04 and Ubuntu 13.10)
+### 2. Install ROS indigo (only supported by Ubuntu 14.04 and Ubuntu 13.10)
 
 #### install
 Note that our simulator runs in ROS indigo. Please make sure you choose the correct version.
@@ -33,25 +35,26 @@ before you dig into the simulator.
 http://wiki.ros.org/ROS/Tutorials#ROS_Tutorials
 
 #### rosbuild or catkin ?
-Our simulator follows rosbuild, so choose the right version when you go through 
+Our simulator follows rosbuild, so please choose the right version when you go through 
 the tutorial.
 
 ### 3. Clone the packges from this github repo
 
 git clone https://github.com/chenmin1107/cs6244_motionplanning.git
 
-### 4. Add this package to ROS system path
-Add your directory to this package to $ROS_PACKAGE_PATH, so the system can find it.
+### 4. Add the package path to ROS system path
+Add your path to $ROS_PACKAGE_PATH, so the system can find it.
 You can do it as follows:
 
-cd ~/
-vim .bashrc
+1. cd ~/
 
-add the follwing line at the end of your .bashrc file
+2. vim .bashrc
+
+3. add the follwing line at the end of your .bashrc file
 
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:<your path to>/cs6244_motionplanning/
 
-Then,
+4. Then,
 
 source ~/.bashrc
 
@@ -72,9 +75,12 @@ This package provides some basic functionalities
 for the simulator, and you do not have worry about it. All you need to do is 
 
 cd mpav/MPAVUtil/
+
 rosmake
 
+
 cd mpav/Steering_Control/
+
 rosmake
 
 
