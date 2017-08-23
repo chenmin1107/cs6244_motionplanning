@@ -95,3 +95,9 @@ Steps to follow:
 2. make sure the small pygame window in on the top of your screen
 
 3. Now you can drive the car in the simulator using the arrow keys. Congrats!
+
+# Dynamic model of the car
+
+Please refer to the following google doc.
+
+https://docs.google.com/document/d/1dy3Zl7XDfvnEylQbOTgZ6XmN3IXKXdZUhXtyWUPQCkQ/edit?usp=sharing
