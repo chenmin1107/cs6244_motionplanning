@@ -75,8 +75,6 @@ This is the package you will work on. You need to
 
 2. rosmake
 
-This will build the package for you.
-
 #### /mpav
 
 This package provides some basic functionalities 
