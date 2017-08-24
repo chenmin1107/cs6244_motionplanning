@@ -15,8 +15,7 @@ The following tutorial gives you an example on how to install Ubuntu along with 
 http://www.everydaylinuxuser.com/2015/11/how-to-install-ubuntu-linux-alongside.html
 (This tutorial has been updated for Ubuntu 16.04, but the steps are the same for 14.04)
 
-In addition, you can always Google to find more informations on this, or ask a friend
-of you who knows linux well to help you.
+If you have a friend who knows linux well, ask him to help you out.
 
 ### 2. Install ROS indigo (only supported by Ubuntu 14.04 and Ubuntu 13.10)
 
@@ -57,6 +56,16 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:<your path to>/cs6244_motionplanning/
 4. source ~/.bashrc
 
 ### 5. List of content and build the packages
+
+#### Note when you build the package: 
+
+You might have to install some third party for ROS, if the compile tells you
+xxx package can not be found when you do rosmake. You can easily install them
+by following the following commands:
+
+1. sudo apt-get update
+
+2. sudo apt-get install ros-indigo-<package name>
 
 #### /autocar
 
