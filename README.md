@@ -55,13 +55,13 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:[your path to]/cs6244_motionplanning/
 
 4. source ~/.bashrc
 
-### 5. List of content and build the packages
+### 5. Build the packages
 
 #### Note: 
 
 When you build the packages, the compile might tell you
 [xxx] package can not be found. You can easily install them
-by following the following commands:
+by following the commands below:
 
 1. sudo apt-get update
 
