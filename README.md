@@ -1,21 +1,18 @@
-# cs6244_motionplanning
+# CS6244 Motion Planning and Control
 
-Autonomous driving simulator for cs6244 course project
+Autonomous driving simulator for CS6244 course project
 
-## How to set up the simulator
-(Note: the simulator has only been tested in the following system
-settings. There is no guarantee that it will work in other versions of systems.
-To avoid any trouble, I suggest you to strictly follow the instructions
-below.)
+## Set up the Simulator
+The simulator has only been tested under the following system settings. There is no guarantee that it will work in other variants.
+To avoid unnessary difficulties, we suggest that you to follow the instructions below closely.
 
 ### 1. Install Ubuntu 14.04 (Recommended)
 
-The following tutorial gives you an example on how to install Ubuntu along with Windows.
+Install the recommended Ubuntu version on a clean partition of the hard disk. The following tutorial gives you an example on how to install Ubuntu along with Windows.
 
 http://www.everydaylinuxuser.com/2015/11/how-to-install-ubuntu-linux-alongside.html
 (This tutorial has been updated for Ubuntu 16.04, but the steps are the same for 14.04)
 
-If you have a friend who knows linux well, ask him to help you out.
 
 ### 2. Install ROS indigo (only supported by Ubuntu 14.04 and Ubuntu 13.10)
 
@@ -33,7 +30,7 @@ before you dig into the simulator.
 
 http://wiki.ros.org/ROS/Tutorials#ROS_Tutorials
 
-#### Rosbuild or catkin ?
+#### Rosbuild
 Our simulator follows rosbuild, so please choose the right version when you go through 
 the tutorial.
 
@@ -45,21 +42,19 @@ git clone https://github.com/chenmin1107/cs6244_motionplanning.git
 Add your path to $ROS_PACKAGE_PATH, so the system can find it.
 You can do it as follows:
 
-1. cd ~/
+* cd ~/
 
-2. vim .bashrc (or whatever editor you like)
+* vim .bashrc (or whatever editor you like)
 
-3. add the follwing line at the end of your .bashrc file
+* add the follwing line at the end of your .bashrc file
 
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:[your path to]/cs6244_motionplanning/
 
-4. source ~/.bashrc
+* source ~/.bashrc
 
 ### 5. Build the packages
 
-#### Note: 
-
-When you build the packages, the compile might tell you
+When you build the packages, the compiler might tell you
 [xxx] package can not be found. You can easily install them
 by following the commands below:
 
@@ -90,7 +85,7 @@ for the simulator, and you do not have worry about it. All you need to do is
 4. rosmake
 
 
-### 6. Simple task to try
+### 6. Try a simple task
 
 Now you are going to try a simple task of using keyboard to drive a car
 in the simulator.
