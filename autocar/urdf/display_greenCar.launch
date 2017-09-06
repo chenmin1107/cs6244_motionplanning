@@ -1,6 +1,6 @@
 
 <launch>
-	<arg name="model" default="$(find intersectionNav)/urdf/golfcar_urdf_green.xml"/>
+	<arg name="model" default="$(find autocar)/urdf/golfcar_urdf_green.xml"/>
 	<arg name="gui" default="False" />
 	<param name="robot_description" textfile="$(arg model)" />
 	<param name="use_gui" value="$(arg gui)"/>

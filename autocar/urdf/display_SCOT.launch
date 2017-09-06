@@ -1,5 +1,5 @@
 <launch>
-	<arg name="model" default="$(find intersectionNav)/urdf/SCOT_urdf.xml"/>
+	<arg name="model" default="$(find autocar)/urdf/SCOT_urdf.xml"/>
 	<arg name="gui" default="False" />
 	<param name="robot_description" textfile="$(arg model)" />
 	<param name="use_gui" value="$(arg gui)"/>

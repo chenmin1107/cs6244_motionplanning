@@ -3,17 +3,17 @@
 <launch>
 
 	<group ns="robot_0">
-		<include file="$(find intersectionNav)/urdf/display_SCOT.launch"/>
+		<include file="$(find autocar)/urdf/display_SCOT.launch"/>
 		<param name="tf_prefix" value="robot_0" />
 	</group>
   
 	<group ns="robot_1">
-		<include file="$(find intersectionNav)/urdf/display_SCOT.launch"/>
+		<include file="$(find autocar)/urdf/display_SCOT.launch"/>
 		<param name="tf_prefix" value="robot_1" />
 	</group>
   
     <group ns="robot_2">
-		<include file="$(find intersectionNav)/urdf/display_SCOT.launch"/>
+		<include file="$(find autocar)/urdf/display_SCOT.launch"/>
 		<param name="tf_prefix" value="robot_2" />
     </group>
 
