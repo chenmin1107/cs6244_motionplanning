@@ -84,8 +84,11 @@ for the simulator, and you do not have worry about it. All you need to do is
 
 4. rosmake
 
+### 6. Install pygame
 
-### 6. Try a simple task
+sudo apt-get install python-pygame
+
+### 7. Try a simple task
 
 Now you are going to try a simple task of using keyboard to drive a car
 in the simulator.
