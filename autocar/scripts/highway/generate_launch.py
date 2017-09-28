@@ -27,6 +27,7 @@ class LaunchGenerator:
             self.d = json.load(f)
 
         self.world_name = self.d['world_name']
+        self.num_lanes = self.d['num_lanes']
         self.path2launch = self.d['path_launch']
         self.num_cars_per_lane = self.d['num_cars_per_lane']
 
@@ -49,18 +50,31 @@ class LaunchGenerator:
 
         # agent cars
         count = 1
-        for i in range(10):
+        for i in range(self.num_lanes):
             num_cars_lane = self.num_cars_per_lane[i]
             for j in range(num_cars_lane):
                 launch_file += self.robotLaunch(count)
                 count += 1
 
 
+        # launch_file += \
+        # '<node pkg="autocar" type="highway_telop.py" name="highway_teleop_0" respawn="false" output="screen" >\n' +\
+        # '<param name="hz" type="int" value="10" />\n' +\
+        # '<param name="acc" type="double" value="5" />\n' +\
+        # '<param name="yaw" type="double" value="0.0" />\n' +\
+        # '</node>\n'
+
         launch_file += \
-        '<node pkg="autocar" type="highway_telop.py" name="highway_teleop_0" respawn="false" output="screen" >\n' +\
+        '<!-- teleop control the robot -->\n' +\
+        '<node pkg="autocar" type="controller.py" name="controller_0" respawn="false" output="screen" ns="/robot_0" >\n' +\
         '<param name="hz" type="int" value="10" />\n' +\
-        '<param name="acc" type="double" value="5" />\n' +\
-        '<param name="yaw" type="double" value="0.0" />\n' +\
+        '<param name="max_speed" type="double" value="5" />\n' +\
+        '<param name="min_speed" type="double" value="-5" />\n' +\
+        '</node>\n' +\
+        '<node pkg="autocar" type="teleop.py" name="teleop_0" respawn="false" output="screen" ns="/robot_0" >\n' +\
+        '<param name="hz" type="int" value="10" />\n' +\
+        '<param name="acc" type="double" value="1" />\n' +\
+        '<param name="yaw" type="double" value="0.25" />\n' +\
         '</node>\n'
 
         # speed controller for the agent cars

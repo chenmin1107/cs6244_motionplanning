@@ -29,6 +29,8 @@ class WorldGenerator:
 
         self.world_name = self.d['world_name']
         self.path2world = self.d['path_world']
+        self.bir_direction = self.d['bir_direction']
+        self.num_lanes = self.d['num_lanes']
         self.bottom_space = self.d['bottom_space']
         self.num_cars_per_lane = self.d['num_cars_per_lane']
         self.car_position_offset = self.d['car_position_offset']
@@ -43,32 +45,49 @@ class WorldGenerator:
         self.cars['init_poses'] = []
         self.cars['init_dir'] = []
 
-        # bottom 5 lanes driving to the left
-        count = 1
-        for i in range(5):
-            num_cars_lane = self.num_cars_per_lane[i]
-            for j in range(num_cars_lane):
-                self.cars['name'].append('gc2' + str(count))
-                self.cars['id'].append(count)
-                x = MAX_X - self.car_position_offset[i]\
-                        - j * self.car_position_interval[i]
-                y = self.bottom_space + i * LANE_WIDTH + LANE_WIDTH / 2.0
-                pose = (x, y)
-                self.cars['init_poses'].append(pose)
-                self.cars['init_dir'].append(180)
-                count += 1
+        if self.bir_direction == 0:
+            # all car driving to the left
+            count = 1
+            for i in range(self.num_lanes):
+                num_cars_lane = self.num_cars_per_lane[i]
+                for j in range(num_cars_lane):
+                    self.cars['name'].append('gc2' + str(count))
+                    self.cars['id'].append(count)
+                    x = MAX_X - self.car_position_offset[i]\
+                            - j * self.car_position_interval[i]
+                    y = self.bottom_space + i * LANE_WIDTH + LANE_WIDTH / 2.0
+                    pose = (x, y)
+                    self.cars['init_poses'].append(pose)
+                    self.cars['init_dir'].append(180)
+                    count += 1
 
-        for i in range(5, 10):
-            num_cars_lane = self.num_cars_per_lane[i]
-            for j in range(num_cars_lane):
-                self.cars['name'].append('gc2' + str(count))
-                self.cars['id'].append(count)
-                x = 0 + self.car_position_offset[i] + j * self.car_position_interval[i] 
-                y = self.bottom_space + i * LANE_WIDTH + LANE_WIDTH / 2.0
-                pose = (x, y)
-                self.cars['init_poses'].append(pose)
-                self.cars['init_dir'].append(0)
-                count += 1
+        if self.bir_direction == 1:
+            # bottom 5 lanes driving to the left
+            count = 1
+            for i in range(self.num_lanes/2):
+                num_cars_lane = self.num_cars_per_lane[i]
+                for j in range(num_cars_lane):
+                    self.cars['name'].append('gc2' + str(count))
+                    self.cars['id'].append(count)
+                    x = MAX_X - self.car_position_offset[i]\
+                            - j * self.car_position_interval[i]
+                    y = self.bottom_space + i * LANE_WIDTH + LANE_WIDTH / 2.0
+                    pose = (x, y)
+                    self.cars['init_poses'].append(pose)
+                    self.cars['init_dir'].append(180)
+                    count += 1
+
+            for i in range(self.num_lanes/2, self.num_lanes):
+                num_cars_lane = self.num_cars_per_lane[i]
+                for j in range(num_cars_lane):
+                    self.cars['name'].append('gc2' + str(count))
+                    self.cars['id'].append(count)
+                    x = 0 + self.car_position_offset[i] + j * self.car_position_interval[i] 
+                    y = self.bottom_space + i * LANE_WIDTH + LANE_WIDTH / 2.0
+                    pose = (x, y)
+                    self.cars['init_poses'].append(pose)
+                    self.cars['init_dir'].append(0)
+                    count += 1
     
     def write2WorldFile(self):
         world_model = ''
@@ -131,7 +150,7 @@ class WorldGenerator:
               'laser_return 1\n' +\
             ')\n' +\
             '# set the resolution of the underlying raytrace model in meters\n' +\
-            'resolution 0.15117\n' +\
+            'resolution 0.175438\n' +\
             'interval_sim 100  # simulation timestep in milliseconds\n' +\
             '#interval_real 100  # real-time interval between simulation updates in milliseconds \n' +\
             'window\n' +\
@@ -147,13 +166,13 @@ class WorldGenerator:
             'floorplan\n' +\
             '( \n' +\
               'name "willow"\n' +\
-              'bitmap "cross_highway_collisioncheck.PNG"\n' +\
+              'bitmap "cross_highway_collisioncheck_2.PNG"\n' +\
               'size [200.0 40.0 1.000]\n' +\
               'pose [100.0 20.0 0.000 0.000]\n' +\
             ')\n'
         world_model +=\
         '# throw in the autonomous car\n' +\
-        'gc1( pose [100 1 0.000 90] name "gc1" color "red")\n'
+        'gc1( pose [100 5.0 0.000 90] name "gc1" color "red")\n'
         
         world_model += \
         '# throw in the agent cars\n'
