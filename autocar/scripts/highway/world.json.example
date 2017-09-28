@@ -1,0 +1,12 @@
+{
+    "world_name": "Q1_world_1",
+    "path_world": "../../maps/world/",
+    "path_launch": "../../launch/",
+    "bottom_space": 5.0,
+    "num_lanes": 10,
+    "num_cars_per_lane": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    "car_position_offset": [1,1,1,1,1,1,1,1,1,1],
+    "car_position_interval": [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+    "mean_speed_per_lane": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    "stdrr_speed_per_lane": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
