@@ -26,6 +26,7 @@ import json
 class SpeedController:
     def __init__(self):
         self.init()
+        self.start_game = False
 
     def init(self):
         self.path2config = rospy.get_param('~path2config', None)
@@ -39,6 +40,10 @@ class SpeedController:
 
         self.loadConfig()
         self.initPubs()
+
+    def gameStarts(self, msg):
+        if msg.state == 1:
+            self.start_game = True
 
     def initPubs(self):
         self.robot_pubs = {}
@@ -69,10 +74,11 @@ class SpeedController:
     def run(self):
         while not rospy.is_shutdown():
             # publish the speed for each robot
-            for i in self.robot_pubs:
-                vel = self.update_vel(self.robot_pubs[i]['laneid'])
-                yaw = 0
-                self.send_control(self.robot_pubs[i]['pub'], vel, yaw)
+            if self.start_game:
+                for i in self.robot_pubs:
+                    vel = self.update_vel(self.robot_pubs[i]['laneid'])
+                    yaw = 0
+                    self.send_control(self.robot_pubs[i]['pub'], vel, yaw)
             self.rate.sleep()
             
     def send_control(self, robot_pub, vel, yaw):
@@ -85,4 +91,6 @@ if __name__=='__main__':
     rospy.init_node('agent_controller')
 
     controller = SpeedController()
+    rospy.Subscriber('/robot_0/highway_game_start', RecordState, controller.gameStarts, queue_size=1)
+
     controller.run()

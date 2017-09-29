@@ -37,12 +37,19 @@ class Teleop:
 
         self.path_record_pub = rospy.Publisher('record_state', \
                 RecordState, queue_size=1)
+
+        self.highway_game_start_pub = rospy.Publisher('highway_game_start', RecordState, queue_size=1)
         
         print "Usage: \n \
                 up arrow: accelerate \n \
                 down arrow: decelerate \n \
                 left arrow: turn left \n \
                 right arrow: turn right"
+
+    def send_highway_start(self):
+        msg = RecordState()
+        msg.state = 1
+        self.highway_game_start_pub.publish(msg)
 
     def keyboard_loop(self):
         while not rospy.is_shutdown():
@@ -52,6 +59,9 @@ class Teleop:
             keys = pygame.key.get_pressed()
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:sys.exit()
+
+            if(keys[pygame.K_s]):
+                self.send_highway_start()
 
             if(keys[pygame.K_UP]):
                 acc = self.acc

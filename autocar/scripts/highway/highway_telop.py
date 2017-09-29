@@ -48,7 +48,8 @@ class Teleop:
 
             keys = pygame.key.get_pressed()
             for event in pygame.event.get():
-                if event.type==pygame.QUIT:sys.exit()
+                if event.type==pygame.QUIT:
+                    sys.exit()
 
             if(keys[pygame.K_UP]):
                 acc = self.acc
