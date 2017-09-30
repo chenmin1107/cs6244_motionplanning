@@ -1,0 +1,13 @@
+{
+    "world_name": "data2",
+    "path_world": "../../maps/world/",
+    "path_launch": "../../launch/",
+    "bottom_space": 14.0,
+    "num_lanes": 4,
+    "bir_direction": 0,
+    "num_cars_per_lane": [4, 4, 4, 4],
+    "car_position_offset": [25, 20, 10, 5],
+    "car_position_interval": [20, 15, 20, 15],
+    "mean_speed_per_lane": [5, 5, 5, 5],
+    "stdrr_speed_per_lane": [0, 0, 0, 0]
+}
