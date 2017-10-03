@@ -2,17 +2,93 @@
 
 ## How to run the highway task
 
-roslaunch autocar dataXX.launch
+1. roslaunch autocar dataXX.launch
 
 where dataXX is the name of the data set we gave to you.
 
-## Future positions of the agent cars
+2. Put the pygame window on the top of your screen
 
-future_positions/dataXX_poses.json
+3. Press 's' key to start the highway simulation task. 
+
+(The autonomous car does not move by default, and your job is to write a motion planner to control the autonomous car)
+
+## Subscribed topic (autonomous car)
+
+The autonomous is subscribing the topic below for the controls.
+
+1. topic name: /robot_0/control_command
+
+2. msg type (controlCommand): 
+
+float32 acc
+
+float32 yaw
+
+3. The controls computed by your motion planner should be sent to this topic.
+
+## Published topics
+
+The following is a list of topics that the simulator is publishing, where you can get informaiton from the simulator.
+
+1. /robot_i/base_pose_ground_truth (i = 1, 2, 3, ... , K)
+
+msg type:
+
+TODO: url link to this msg type
+
+where i indicates the ith agent car on road. Your motion planner should subscribe to the topic above to get the current state of the ith agent car.
+
+## Goal region
+
+The autonomous car is considered to have crossed the road if its y-coordiate is larger than 27 
+
+## Parameters
+
+1. Car length: 2.385, car width: 1.2
+
+2. Car local axis origin: (1.8, 0.6), see the figure below:
+
+TODO: a figure shows the origin of the car axis
+
+3. Map size (X * Y) = (200 * 40)
+
+4. Map origin (0, 0) is at the left-bottom corner of the image
+
+## Input file: future positions of the agent cars
+
+locations of input file: future_positions/dataXX_poses.json 
 
 File format of dataXX_poses.json:
 
-key: 'robot_ID'
+{'robot_1': [[x_0, y_0, t_0], 
+              [x_1, y_1, t_1],
+              ... 
+              [x_N, y_N, t_N]]
 
-value: [[$x_0, y_0$, dt],
-        [$x_1, y_1$, dt]]
+ .
+ .
+ .
+ 'robot_K': [[x_0, y_0, t_0], 
+              [x_1, y_1, t_1],
+              ... 
+              [x_N, y_N, t_N]]
+}
+
+where K is the number of agent cars on road. N is the length of the recorded data sequence for each car.
+x_i, y_i (i = 0, 1, ... , N) are the coordinates at the ith time step.
+t_0, ... , t_N are the timestamps of the data sequence, and we set t_0 = 0 (the simulation starts at t_0).
+
+## Output file: the controls computed by your motion planner 
+
+Output file name: 'dataXX_controls.json' 
+
+File format of dataXX_controls.json:
+
+{'robot_0': [[acc_0, t_0], 
+             [acc_1, t_1],
+              ... 
+             [acc_M, t_M]]
+}
+
+where M is the steps it takes for the autonomous car to cross the road. acc_i is the 
+acceleration of the autonomous car at time t_i.
