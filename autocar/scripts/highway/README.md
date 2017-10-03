@@ -25,18 +25,17 @@ The autonomous is subscribing the topic below:
     float32 yaw
 
 3. The controls computed by your motion planner should be sent to the topic above. 
-Note that you are only controling the acceleration, the yaw should always be zero in this 
-highway crossing task.
+Note that in the highway task, you are only controling the acceleration, the yaw should always be zero.
 
 ## Published topics
 
-The following is a list of topics that the simulator is publishing, where you can get informaiton from the simulator.
+The following is a list of topics that the simulator is publishing, where you can get informaiton from.
 
 1. /robot_i/base_pose_ground_truth (i = 1, 2, 3, ... , K)
 
 msg type (nav_msgs/Odometry):
 
-url: http://docs.ros.org/api/nav_msgs/html/msg/Odometry.html
+http://docs.ros.org/api/nav_msgs/html/msg/Odometry.html
 
 where i indicates the ith agent car on road. Your motion planner should subscribe to the topic above to get the current state of the ith agent car.
 
