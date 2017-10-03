@@ -14,7 +14,7 @@ where dataXX is the name of the data set we gave to you.
 
 ## Subscribed topic (autonomous car)
 
-The autonomous is subscribing the topic below:
+The autonomous car is subscribing the topic below:
 
 1. topic name: /robot_0/control_command
 
