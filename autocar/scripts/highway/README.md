@@ -31,14 +31,15 @@ Note that in the highway task, you are only controling the acceleration, the yaw
 
 The following is a list of topics that the simulator is publishing:
 
-/robot_i/base_pose_ground_truth (i = 1, 2, 3, ... , K)
+1. /robot_i/base_pose_ground_truth (i = 1, 2, 3, ... , K)
 
-where i indicates the ith agent car on road. Your motion planner should subscribe to the topic above to get the current state of the ith agent car.
+where i indicates the ith agent car on road.
 
-msg type (nav_msgs/Odometry):
+2. msg type (nav_msgs/Odometry):
 
 http://docs.ros.org/api/nav_msgs/html/msg/Odometry.html
 
+3. Your motion planner should subscribe to the topic above to get the current state of the ith agent car.
 
 ## Goal region
 
