@@ -2,7 +2,7 @@
 
 ## How to run the highway task
 
-1. roslaunch autocar dataXX.launch
+1. roslaunch autocar dataXX.launch (e.g., data1.launch)
 
 where dataXX is the name of the data set we gave to you.
 
@@ -14,17 +14,19 @@ where dataXX is the name of the data set we gave to you.
 
 ## Subscribed topic (autonomous car)
 
-The autonomous is subscribing the topic below for the controls.
+The autonomous is subscribing the topic below:
 
 1. topic name: /robot_0/control_command
 
 2. msg type (controlCommand): 
 
-float32 acc
+    float32 acc
 
-float32 yaw
+    float32 yaw
 
-3. The controls computed by your motion planner should be sent to this topic.
+3. The controls computed by your motion planner should be sent to the topic above. 
+Note that you are only controling the acceleration, the yaw should always be zero in this 
+highway crossing task.
 
 ## Published topics
 
@@ -32,9 +34,9 @@ The following is a list of topics that the simulator is publishing, where you ca
 
 1. /robot_i/base_pose_ground_truth (i = 1, 2, 3, ... , K)
 
-msg type:
+msg type (nav_msgs/Odometry):
 
-TODO: url link to this msg type
+url: http://docs.ros.org/api/nav_msgs/html/msg/Odometry.html
 
 where i indicates the ith agent car on road. Your motion planner should subscribe to the topic above to get the current state of the ith agent car.
 
@@ -48,7 +50,7 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 2. Car local axis origin: (1.8, 0.6), see the figure below:
 
-TODO: a figure shows the origin of the car axis
+![alt text](figs/car_params.png)
 
 3. Map size (X * Y) = (200 * 40)
 
