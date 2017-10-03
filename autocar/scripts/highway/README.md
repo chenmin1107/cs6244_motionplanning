@@ -51,9 +51,11 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 ![alt text](figs/car_params.png)
 
-3. Map size (X * Y) = (200 * 40)
+3. Map size: (X * Y) = (200m * 40m)
 
-4. Map origin (0, 0) is at the left-bottom corner of the image
+4. Map origin (0, 0) is at the left-bottom corner
+
+5. Lane width: 3m
 
 ## Input file: future positions of the agent cars
 
@@ -69,19 +71,20 @@ File format of dataXX_poses.json:
  .
  .
  .
+
  'robot_K': [[x_0, y_0, t_0], 
               [x_1, y_1, t_1],
               ... 
               [x_N, y_N, t_N]]
 }
 
-where K is the number of agent cars on road. N is the length of the recorded data sequence for each car.
+where K is the number of agent cars on road. N is the length of the recorded data sequence.
 x_i, y_i (i = 0, 1, ... , N) are the coordinates at the ith time step.
-t_0, ... , t_N are the timestamps of the data sequence, and we set t_0 = 0 (the simulation starts at t_0).
+t_0, ... , t_N are the timestamps of the data sequence, and the simulation starts at t_0 = 0.
 
 ## Output file: the controls computed by your motion planner 
 
-Output file name: 'dataXX_controls.json' 
+Output file: 'dataXX_controls.json' 
 
 File format of dataXX_controls.json:
 
@@ -91,5 +94,5 @@ File format of dataXX_controls.json:
              [acc_M, t_M]]
 }
 
-where M is the steps it takes for the autonomous car to cross the road. acc_i is the 
-acceleration of the autonomous car at time t_i.
+where M is the number of steps it takes for the autonomous car to cross the road. acc_i is the 
+acceleration of the autonomous car at timestamp t_i.
