@@ -49,7 +49,7 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 1. Car length: 2.385, car width: 1.2
 
-2. Car local axis origin: (1.8, 0.6), see the figure below:
+2. Car local axis origin: see the figure below:
 
 ![alt text](figs/car_params.png)
 
