@@ -30,7 +30,7 @@ class NewtonController:
 
         self.hz = rospy.get_param('~hz', 10)
         self.max_speed = rospy.get_param('~max_speed', 5)
-        self.min_speed = rospy.get_param('~min_speed', -3)
+        self.min_speed = rospy.get_param('~min_speed', -5)
         self.rate = rospy.Rate(self.hz) 
 
         self.robot_pub = rospy.Publisher('cmd_vel', Twist, queue_size=1)
@@ -38,7 +38,6 @@ class NewtonController:
         self.acc = 0
         self.yaw = 0
         self.vel = 0
-
 
     def command_callback(self, msg):
         self.acc = msg.acc

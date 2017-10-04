@@ -59,6 +59,10 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 5. Lane width: 3m
 
+6. Max forward speed of autonomous car: 5 m/s
+
+7. Max backward speed of autonomous car: -5 m/s
+
 ## Input file: future positions of the agent cars
 
 locations of input file: future_positions/dataXX_poses.json 
