@@ -98,7 +98,7 @@ t_0, ... , t_N are the timestamps of the data sequence, and the simulation start
 
 1. Output file: 'dataXX_controls.json' 
 
-2. Output file description: the purpose of the output file is to record your planned controls for the autonomous car.
+2. Description of output file: the purpose of the output file is to record your planned controls for the autonomous car.
 Later on, we will test your solution by reading those controls from the output file and sending
 it to the autonomous car, to see whether it can successfully cross the highway or not.
 
