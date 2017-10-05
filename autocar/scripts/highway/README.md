@@ -71,7 +71,7 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 cars. For example, you can load the file and querying the position of 'robot_i'
 at time step t_i.
 You will need this information to plan controls for the autonomous car.
-We assume the simulation starts at t_0 = 0.
+We assume that the simulation starts at t_0 = 0.
 
 3. File format of dataXX_poses.json:
 
@@ -101,7 +101,7 @@ t_0, ... , t_N are the timestamps of the data sequence, and the simulation start
 
 2. Description of output file: the purpose of the output file is to record your planned controls for the autonomous car.
 Later on, we will test your solution by reading those controls from the output file and sending
-it to the autonomous car, to see whether it can successfully cross the highway or not. We assume the simulation starts at t_0 = 0.
+it to the autonomous car, to see whether it can successfully cross the highway or not. We assume that the simulation starts at t_0 = 0.
 
 3. File format of dataXX_controls.json:
 
