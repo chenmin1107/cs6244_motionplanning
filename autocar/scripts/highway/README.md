@@ -65,9 +65,15 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 ## Input file: future positions of the agent cars
 
-locations of input file: future_positions/dataXX_poses.json 
+1. Locations of input file: future_positions/dataXX_poses.json 
 
-File format of dataXX_poses.json:
+2. Description of input file: the input file provides you the future positions of other agent
+cars. For example, you can load the file and querying the position of 'robot_i'
+at time step t_i.
+
+You will need to use this information to plan for the autonomous car.
+
+3. File format of dataXX_poses.json:
 
 {'robot_1': [[x_0, y_0, t_0], 
               [x_1, y_1, t_1],
@@ -88,11 +94,16 @@ where K is the number of agent cars on road. N is the length of the recorded dat
 x_i, y_i (i = 0, 1, ... , N) are the coordinates at the ith time step.
 t_0, ... , t_N are the timestamps of the data sequence, and the simulation starts at t_0 = 0.
 
+
 ## Output file: the controls computed by your motion planner 
 
-Output file: 'dataXX_controls.json' 
+1. Output file: 'dataXX_controls.json' 
 
-File format of dataXX_controls.json:
+2. Output file description: the purpose of the output file is to record your planned controls for the autonomous car.
+Later on, we will test your solution by reading those controls from the output file and sending
+it to the autonomous car, to see whether it can successfully cross the highway or not.
+
+3. File format of dataXX_controls.json:
 
 {'robot_0': [[acc_0, t_0], 
              [acc_1, t_1],
