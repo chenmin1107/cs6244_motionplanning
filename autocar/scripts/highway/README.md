@@ -70,8 +70,7 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 2. Description of input file: the input file provides you the future positions of other agent
 cars. For example, you can load the file and querying the position of 'robot_i'
 at time step t_i.
-
-You will need to use this information to plan for the autonomous car.
+You will need this information to plan controls for the autonomous car.
 
 3. File format of dataXX_poses.json:
 
