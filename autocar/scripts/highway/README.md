@@ -63,6 +63,23 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 7. Max backward speed of autonomous car: -5 m/s
 
+## Acceleration model
+
+1. v_2 - v_1 = a_1 (t_2 - t_1)
+
+where, v_1, v_2 are the velocity of the autonomous car at time step
+t_1 and t_2. a_1 is the acceleration you applied at time step t_1.
+
+2. Ideally the acceleration model should be continuous in time. However,
+this is impossible in simulation, which is discrete in time.
+
+The ros stage simulator runs at 10 hz, which means when you computed control
+should be ideally be applied at 10 hz, or 5 hz, to make sure the simulator has minimum
+delay in processing your computed control.
+
+3. The acceleration you can apply to the autonomous car is a real number
+between [-1, 1].
+
 ## Input file: future positions of the agent cars
 
 1. Locations of input file: future_positions/dataXX_poses.json 
