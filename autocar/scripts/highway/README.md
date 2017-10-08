@@ -65,7 +65,7 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 ## Acceleration model
 
-1. v_2 - v_1 = a_1 (t_2 - t_1)
+1. v_2 - v_1 = a_1 (t_2 - t_1). 
 
 where, v_1, v_2 are the velocity of the autonomous car at time step
 t_1 and t_2. a_1 is the acceleration you applied at time step t_1.
@@ -77,7 +77,13 @@ The ros stage simulator runs at 10 hz, which means when you computed control
 should be ideally be applied at 10 hz, or 5 hz, to make sure the simulator has minimum
 delay in processing your computed control.
 
-3. The acceleration you can apply to the autonomous car is a real number
+3. The velocity applied in simulation at any time t is v_t = v_auto + a_t * 1 / 10
+
+where v_auto is the current of the autonomous car. a_t is the acceleration
+you applied on the autonomous at time step t. 1 / 10 is due the simulation
+runs at 10 hz.
+
+4. The acceleration you can apply to the autonomous car is a real number
 between [-1, 1].
 
 ## Input file: future positions of the agent cars
