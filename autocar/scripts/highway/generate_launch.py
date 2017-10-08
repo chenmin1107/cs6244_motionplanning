@@ -67,7 +67,7 @@ class LaunchGenerator:
         launch_file += \
         '<!-- teleop control the robot -->\n' +\
         '<node pkg="autocar" type="controller.py" name="controller_0" respawn="false" output="screen" ns="/robot_0" >\n' +\
-        '<param name="hz" type="int" value="100" />\n' +\
+        '<param name="hz" type="int" value="10" />\n' +\
         '<param name="max_speed" type="double" value="5" />\n' +\
         '<param name="min_speed" type="double" value="-5" />\n' +\
         '</node>\n' +\

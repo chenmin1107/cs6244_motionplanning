@@ -28,7 +28,7 @@ class NewtonController:
 
     def init(self):
 
-        self.hz = rospy.get_param('~hz', 100)
+        self.hz = rospy.get_param('~hz', 10)
         self.max_speed = rospy.get_param('~max_speed', 5)
         self.min_speed = rospy.get_param('~min_speed', -5)
         self.rate = rospy.Rate(self.hz) 
