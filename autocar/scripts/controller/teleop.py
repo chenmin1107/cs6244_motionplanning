@@ -29,7 +29,7 @@ class Teleop:
         screen = pygame.display.set_mode((250, 250))
 
         rospy.init_node('teleop')
-        self.rate = rospy.Rate(rospy.get_param('~hz', 10)) 
+        self.rate = rospy.Rate(rospy.get_param('~hz', 20)) 
         self.acc = rospy.get_param('~acc', 1)
         self.yaw = rospy.get_param('~yaw', 0.25)
 

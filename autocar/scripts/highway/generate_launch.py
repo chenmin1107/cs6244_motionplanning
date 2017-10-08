@@ -72,7 +72,7 @@ class LaunchGenerator:
         '<param name="min_speed" type="double" value="-5" />\n' +\
         '</node>\n' +\
         '<node pkg="autocar" type="teleop.py" name="teleop_0" respawn="false" output="screen" ns="/robot_0" >\n' +\
-        '<param name="hz" type="int" value="10" />\n' +\
+        '<param name="hz" type="int" value="20" />\n' +\
         '<param name="acc" type="double" value="1" />\n' +\
         '<param name="yaw" type="double" value="0.25" />\n' +\
         '</node>\n'
