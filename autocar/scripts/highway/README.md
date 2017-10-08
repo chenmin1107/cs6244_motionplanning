@@ -73,13 +73,23 @@ t_1 and t_2. a_1 is the acceleration you applied at time step t_1.
 2. Ideally the acceleration model should be continuous in time. However,
 this is impossible in simulation, which is discrete in time.
 
-The ros stage simulator runs at 10 hz, which means when you computed control
-should be ideally be applied at 10 hz, or 5 hz, to make sure the simulator has minimum
-delay in processing your computed control.
+The ros stage simulator runs at 10 hz, which means when your computed control
+should be ideally at 10 hz, or 5 hz (less than 10 hz), to make sure the simulator 
+processing your controls accurately.
+For example, if you want the autonomous car to accelerate at 1m/s^2 for 
+0.0001s, this can not be done. The simulator requires the control duration
+to be at least 0.1s.
+
+Note that when you sending out your computed control via the ros msg 'controlCommand'
+to the simulator,
+make sure it is sending out faster than 10 hz (preferably at least 20 hz to 50 hz). 
+In this way, the simulator
+can receive your updated control in time, without any delays.
 
 3. The velocity applied in simulation at any time t is v_t = v_auto + a_t * 1 / 10
 
-where v_auto is the current of the autonomous car. a_t is the acceleration
+where v_auto is the current velocity of the autonomous car at time step t. 
+a_t is the acceleration
 you applied on the autonomous at time step t. 1 / 10 is due the simulation
 runs at 10 hz.
 
