@@ -12,6 +12,9 @@ where dataXX is the name of the data set we gave to you.
 
 (The autonomous car does not move by default, and your job is to write a motion planner to control the autonomous car)
 
+4. If you see an error once you press 's' key, please make sure your
+numpy version is >= 1.13.1
+
 ## Subscribed topic (autonomous car)
 
 The autonomous car is subscribing the topic below:
