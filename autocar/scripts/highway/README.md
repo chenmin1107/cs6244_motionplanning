@@ -68,7 +68,10 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 ## Acceleration model
 
-1. v_2 - v_1 = a_1 (t_2 - t_1). 
+The acceleration model describes how the autonomous moves in the
+simulator.
+
+1. Speed change given an acceleration: v_2 - v_1 = a_1 (t_2 - t_1). 
 
 where, v_1, v_2 are the velocity of the autonomous car at time step
 t_1 and t_2. a_1 is the acceleration you applied at time step t_1.
@@ -79,9 +82,11 @@ this is impossible in simulation, which is discrete in time.
 The ros stage simulator runs at 10 hz, which means when your computed control
 should be ideally at 10 hz, or 5 hz (less than 10 hz), to make sure the simulator 
 processing your controls accurately.
+
 For example, if you want the autonomous car to accelerate at 1m/s^2 for 
 0.0001s, this can not be done. The simulator requires the control duration
-to be at least 0.1s.
+to be at least 0.1s. One default stratgy is to keep the control duration to be
+0.1s.
 
 Note that when you sending out your computed control via the ros msg 'controlCommand'
 to the simulator,
@@ -89,11 +94,12 @@ make sure it is sending out faster than 10 hz (preferably at least 20 hz to 50 h
 In this way, the simulator
 can receive your updated control in time, without any delays.
 
-3. The velocity applied in simulation at any time t is v_t = v_auto + a_t * 1 / 10
+3. The velocity applied to the autonomous car in simulation at any time step t is: 
+v_t = v_auto + a_t * 1 / 10
 
 where v_auto is the current velocity of the autonomous car at time step t. 
 a_t is the acceleration
-you applied on the autonomous at time step t. 1 / 10 is due the simulation
+at time step t. 1 / 10 is due the fact that simulation
 runs at 10 hz.
 
 4. The acceleration you can apply to the autonomous car is a real number
