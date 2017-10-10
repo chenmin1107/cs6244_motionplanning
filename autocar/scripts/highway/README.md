@@ -117,23 +117,24 @@ We assume that the simulation starts at t_0 = 0.
 
 3. File format of dataXX_poses.json:
 
-{'robot_1': [[x_0, y_0, t_0], 
-              [x_1, y_1, t_1],
+{'robot_1': [[x_0, y_0, ori_0 t_0], 
+              [x_1, y_1, ori_1, t_1],
               ... 
-              [x_N, y_N, t_N]]
+              [x_N, y_N, ori_N, t_N]]
 
  .
  .
  .
 
- 'robot_K': [[x_0, y_0, t_0], 
-              [x_1, y_1, t_1],
+ 'robot_K': [[x_0, y_0, ori_0, t_0], 
+              [x_1, y_1, ori_1, t_1],
               ... 
-              [x_N, y_N, t_N]]
+              [x_N, y_N, ori_N, t_N]]
 }
 
 where K is the number of agent cars on road. N is the length of the recorded data sequence.
-x_i, y_i (i = 0, 1, ... , N) are the coordinates at the ith time step.
+x_i, y_i, ori_i (i = 0, 1, ... , N) are the x-coordinate, y-coordiate and orientation at 
+the ith time step.
 t_0, ... , t_N are the timestamps of the data sequence, and the simulation starts at t_0 = 0.
 
 
