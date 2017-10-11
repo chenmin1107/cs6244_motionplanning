@@ -66,6 +66,10 @@ The autonomous car is considered to have crossed the road if its y-coordiate is 
 
 7. Max backward speed of autonomous car: -5 m/s
 
+8. Initial autonomous car position: (100, 5, 90)
+
+where (x, y, yaw) is the position and orientation.
+
 ## Acceleration model
 
 The acceleration model describes how the autonomous moves in the
