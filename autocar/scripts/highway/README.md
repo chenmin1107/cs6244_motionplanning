@@ -72,31 +72,14 @@ where (x, y, yaw) is the position and orientation.
 
 ## Acceleration model
 
-The acceleration model describes how the autonomous moves in the
-simulator.
+The acceleration model describes how the autonomous car's velocity changes in the
+simulation.
 
-1. Speed change given an acceleration: v_2 - v_1 = a_1 (t_2 - t_1). 
-
-where, v_1, v_2 are the velocity of the autonomous car at time step
-t_1 and t_2. a_1 is the acceleration you applied at time step t_1.
-
-2. Ideally the acceleration model should be continuous in time. However,
+1. Ideally the acceleration model should be continuous in time. However,
 this is impossible in simulation, which is discrete in time.
 
-The ros stage simulator runs at 10 hz, which means when your computed control
-should be ideally at 10 hz, or 5 hz (less than 10 hz), to make sure the simulator 
-processing your controls accurately.
-
-For example, if you want the autonomous car to accelerate at 1m/s^2 for 
-0.0001s, this can not be done. The simulator requires the control duration
-to be at least 0.1s. One default stratgy is to keep the control duration to be
-0.1s.
-
-Note that when you sending out your computed control via the ros msg 'controlCommand'
-to the simulator,
-make sure it is sending out faster than 10 hz (preferably at least 20 hz to 50 hz). 
-In this way, the simulator
-can receive your updated control in time, without any delays.
+The ros stage simulator runs at 10 hz, which means the velocity gets
+updated at every 0.1s.
 
 3. The velocity applied to the autonomous car in simulation at any time step t is: 
 v_t = v_auto + a_t * 1 / 10
@@ -107,7 +90,10 @@ at time step t. 1 / 10 is due the fact that simulation
 runs at 10 hz.
 
 4. The acceleration you can apply to the autonomous car is a real number
-between [-1, 1].
+between [-10, 10].
+
+For simplicity, 
+please keep your control duration at each step to be 0.1s (10hz) as well.
 
 ## Input file: future positions of the agent cars
 
@@ -152,11 +138,12 @@ it to the autonomous car, to see whether it can successfully cross the highway o
 
 3. File format of dataXX_controls.json:
 
-{'robot_0': [[acc_0, t_0], 
-             [acc_1, t_1],
+{'robot_0': [[acc_1, t_1],
               ... 
              [acc_M, t_M]]
 }
 
 where M is the number of steps it takes for the autonomous car to cross the road. acc_i is the 
 acceleration of the autonomous car at timestamp t_i.
+Note that for simplicity, we assume the control duration at each step is 0.1s, 
+i.e. t_i = i * 0.1
