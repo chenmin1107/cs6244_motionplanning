@@ -24,7 +24,7 @@ import numpy as np
 import json
 
 DT = 0.1
-DATA_T_LEN = 60
+DATA_T_LEN = 30
 
 MAX_X = 200
 MAX_Y = 40

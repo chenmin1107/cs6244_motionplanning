@@ -46,9 +46,9 @@ class Teleop:
                 left arrow: turn left \n \
                 right arrow: turn right"
 
-    def send_highway_start(self):
+    def send_highway_start(self, state):
         msg = RecordState()
-        msg.state = 1
+        msg.state = state
         self.highway_game_start_pub.publish(msg)
 
     def keyboard_loop(self):
@@ -61,7 +61,10 @@ class Teleop:
                 if event.type==pygame.QUIT:sys.exit()
 
             if(keys[pygame.K_s]):
-                self.send_highway_start()
+                self.send_highway_start(1)
+
+            if(keys[pygame.K_t]):
+                self.send_highway_start(2)
 
             if(keys[pygame.K_UP]):
                 acc = self.acc

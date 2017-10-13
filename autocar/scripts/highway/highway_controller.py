@@ -42,7 +42,7 @@ class SpeedController:
         self.initPubs()
 
     def gameStarts(self, msg):
-        if msg.state == 1:
+        if msg.state == 1 or msg.state == 2:
             self.start_game = True
 
     def initPubs(self):

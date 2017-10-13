@@ -25,6 +25,7 @@ import numpy as np
 class NewtonController:
     def __init__(self):
         self.init()
+        self.start_game = False
 
     def init(self):
 
@@ -69,23 +70,28 @@ class NewtonController:
         print 'angular: ', msg.twist.twist.angular.x, msg.twist.twist.angular.y, msg.twist.twist.angular.z
 
     def state_callback(self, msg):
-        self.vel = self.speed_sign(msg) * sqrt(pow(msg.twist.twist.linear.x, 2) + pow(msg.twist.twist.linear.y, 2))
+        a = 1
+        # self.vel = self.speed_sign(msg) * sqrt(pow(msg.twist.twist.linear.x, 2) + pow(msg.twist.twist.linear.y, 2))
         
+    def gameStarts(self, msg):
+        if msg.state == 1:
+            self.start_game = True
 
     def update_vel(self):
-        vel = self.vel + self.acc * 1.0 / self.hz
-        if vel > self.max_speed:
-            vel = self.max_speed
-        if vel < self.min_speed:
-            vel = self.min_speed
-        return vel
+        self.vel = self.vel + self.acc * 1.0 / self.hz
+        if self.vel > self.max_speed:
+            self.vel = self.max_speed
+        if self.vel < self.min_speed:
+            self.vel = self.min_speed
+        return self.vel
 
     def run(self):
         while not rospy.is_shutdown():
-            vel = self.update_vel()
-            yaw = self.yaw
-            
-            self.send_control(vel, yaw)
+            if self.start_game:
+                vel = self.update_vel()
+                yaw = self.yaw
+                
+                self.send_control(vel, yaw)
 
             self.rate.sleep()
             
@@ -102,5 +108,6 @@ if __name__=='__main__':
 
     rospy.Subscriber('control_command', controlCommand, controller.command_callback, queue_size=1)
     rospy.Subscriber('base_pose_ground_truth', Odometry, controller.state_callback, queue_size=1)
+    rospy.Subscriber('highway_game_start', RecordState, controller.gameStarts, queue_size=1)
 
     controller.run()
