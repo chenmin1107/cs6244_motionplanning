@@ -147,3 +147,15 @@ where M is the number of steps it takes for the autonomous car to cross the road
 acceleration of the autonomous car at timestamp t_i.
 Note that for simplicity, we assume the control duration at each step is 0.1s, 
 i.e. t_i = i * 0.1
+
+## Simulate your output policy file
+
+Steps to follow:
+
+1. roslaunch autocar dataXX.launch
+
+2. rosrun autocar auto_controller.py <path to your policy file>
+
+3. put the pygame window on the top of your screen
+
+4. Press key 't' to start the simulation
