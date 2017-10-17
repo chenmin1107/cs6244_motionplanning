@@ -1,0 +1,85 @@
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find autocar)/maps/world/highway.yaml">
+    <param name="frame_id" value="/map" />
+  </node>
+
+  <node name="stageros" pkg="stage_ros" type="stageros" args="-g $(find autocar)/maps/world/highway.world" respawn="false" output="screen">
+    <param name="base_watchdog_timeout" value="0.2"/>
+  </node>
+
+  <node name="fake_localization_0" pkg="fake_localization" type="fake_localization" respawn="false" ns="/robot_0">
+    <param name="odom_frame_id" value="/robot_0/odom"/>
+    <param name="base_frame_id" value="/robot_0/base_link"/>
+  </node>
+
+  <node name="fake_localization_1" pkg="fake_localization" type="fake_localization" respawn="false" ns="/robot_1">
+    <param name="odom_frame_id" value="/robot_1/odom"/>
+    <param name="base_frame_id" value="/robot_1/base_link"/>
+  </node>
+
+
+  <!-- record the path -->
+  <!--<node pkg="autocar" type="path_generator.py" name="pathGen_0" respawn="false" output="screen" ns="/robot_0" >-->
+    <!--<param name="hz" type="int" value="5" />-->
+    <!--<param name="path2file" type="str" value="$(find autocar)/path/test0.txt" />-->
+  <!--</node>-->
+  
+  <!--[> record the path <]-->
+  <!--<node pkg="autocar" type="path_generator.py" name="pathGen_1" respawn="false" output="screen" ns="/robot_1" >-->
+    <!--<param name="hz" type="int" value="5" />-->
+    <!--<param name="path2file" type="str" value="$(find autocar)/path/test1.txt" />-->
+  <!--</node>-->
+
+
+  <!-- teleop control the robot -->
+  <node pkg="autocar" type="controller.py" name="controller_0" respawn="false" output="screen" ns="/robot_0" >
+    <param name="hz" type="int" value="10" />
+    <param name="max_speed" type="double" value="5" />
+    <param name="min_speed" type="double" value="-3" />
+  </node>
+  
+  <node pkg="autocar" type="controller.py" name="controller_1" respawn="false" output="screen" ns="/robot_1" >
+    <param name="hz" type="int" value="10" />
+    <param name="max_speed" type="double" value="5" />
+    <param name="min_speed" type="double" value="-3" />
+  </node>
+
+  <node pkg="autocar" type="teleop.py" name="teleop_0" respawn="false" output="screen" ns="/robot_0" >
+    <param name="hz" type="int" value="10" />
+    <param name="acc" type="double" value="1" />
+    <param name="yaw" type="double" value="0.25" />
+  </node>
+
+  <!--<node pkg="autocar" type="teleop.py" name="teleop_1" respawn="false" output="screen" ns="/robot_1" >-->
+    <!--<param name="hz" type="int" value="10" />-->
+    <!--<param name="acc" type="double" value="1" />-->
+    <!--<param name="yaw" type="double" value="0.25" />-->
+  <!--</node>-->
+
+
+  <!-- display robots in rviz -->
+  <group ns="robot_0">
+    <include file="$(find autocar)/urdf/display_redCar.launch"/>
+    <param name="tf_prefix" value="robot_0" />
+  </group>
+  
+  <group ns="robot_1">
+    <include file="$(find autocar)/urdf/display_greenCar.launch"/>
+    <param name="tf_prefix" value="robot_1" />
+  </group>
+
+  <!--<group ns="robot_2">-->
+    <!--<include file="$(find autocar)/urdf/display_greenCar.launch"/>-->
+    <!--<param name="tf_prefix" value="robot_2" />-->
+  <!--</group>-->
+
+  <!--<group ns="robot_3">-->
+    <!--<include file="$(find autocar)/urdf/display_greenCar.launch"/>-->
+    <!--<param name="tf_prefix" value="robot_3" />-->
+  <!--</group>-->
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find autocar)/maps/rviz_settings/highway_simu.rviz"/> 
+</launch>

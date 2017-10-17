@@ -1,0 +1,98 @@
+define block model
+(
+size [2.385 1.200 1.000]
+gui_nose 0
+)
+define topurg ranger
+(
+sensor(
+range [0.0 80.0]
+fov 180
+samples 360
+)
+# generic model properties
+color "black"
+size [ 0.050 0.050 0.100 ]
+)
+define gc1 position
+(
+#size [0.65 0.65 0.25]
+#origin [-0.05 0 0 0]
+size [2.385 1.200 1.000]
+origin [0.792 0.000 0.000 0.000]
+gui_nose 1
+drive "car"
+localization "gps"
+#odom_error [0.01 0.05 0.01 0.02 0.01 0.02]
+topurg(pose [1.985 0.000 -0.500 0.000])
+velocity_bounds [-10000 10000 -1 1 -1 1 -90 90 ]	
+acceleration_bounds [-10000 10000 -1 1 -1 1 -90 90]
+)
+define gc2 position
+(
+#size [0.65 0.65 0.25]
+#origin [-0.05 0 0 0]
+size [2.385 1.200 1.000]
+origin [0.792 0.000 0.000 0.000]
+gui_nose 1
+drive "car"
+localization "gps"
+#odom_error [0.01 0.05 0.01 0.02 0.01 0.02]
+topurg(pose [1.985 0.000 -0.500 0.000])
+velocity_bounds [-10000 10000 -1 1 -1 1 -90 90 ]	
+acceleration_bounds [-10000 10000 -1 1 -1 1 -90 90]
+)
+define floorplan model
+(
+# sombre, sensible, artistic
+color "gray30"
+# most maps will need a bounding box
+boundary 1
+gui_nose 0
+gui_grid 0
+#gui_movemask 0
+gui_outline 0
+gripper_return 0
+fiducial_return 0
+laser_return 1
+)
+# set the resolution of the underlying raytrace model in meters
+resolution 0.175438
+interval_sim 100  # simulation timestep in milliseconds
+#interval_real 100  # real-time interval between simulation updates in milliseconds 
+window
+( 
+size [ 357 572 ] 
+center [143.242 97.300] 
+#  center [-168.899 86.858]
+#rotate [ 0.000 -1.560 ]
+rotate [ 0.000 -407.500 ]
+scale 3.139 
+)
+# load an environment bitmap
+floorplan
+( 
+name "willow"
+bitmap "cross_highway_collisioncheck_2.PNG"
+size [200.0 40.0 1.000]
+pose [100.0 20.0 0.000 0.000]
+)
+# throw in the autonomous car
+gc1( pose [100 5.0 0.000 90] name "gc1" color "red")
+# throw in the agent cars
+gc2( pose [175 15.5 0.0 180] name "gc21" color "green")
+gc2( pose [155 15.5 0.0 180] name "gc22" color "green")
+gc2( pose [135 15.5 0.0 180] name "gc23" color "green")
+gc2( pose [115 15.5 0.0 180] name "gc24" color "green")
+gc2( pose [180 18.5 0.0 180] name "gc25" color "green")
+gc2( pose [165 18.5 0.0 180] name "gc26" color "green")
+gc2( pose [150 18.5 0.0 180] name "gc27" color "green")
+gc2( pose [135 18.5 0.0 180] name "gc28" color "green")
+gc2( pose [15 21.5 0.0 0] name "gc29" color "green")
+gc2( pose [35 21.5 0.0 0] name "gc210" color "green")
+gc2( pose [55 21.5 0.0 0] name "gc211" color "green")
+gc2( pose [75 21.5 0.0 0] name "gc212" color "green")
+gc2( pose [5 24.5 0.0 0] name "gc213" color "green")
+gc2( pose [22 24.5 0.0 0] name "gc214" color "green")
+gc2( pose [39 24.5 0.0 0] name "gc215" color "green")
+gc2( pose [56 24.5 0.0 0] name "gc216" color "green")
