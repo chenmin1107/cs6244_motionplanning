@@ -86,8 +86,9 @@ v_t = v_auto + a_t * 1 / 10
 
 where v_auto is the current velocity of the autonomous car at time step t. 
 a_t is the acceleration
-at time step t. 1 / 10 is due the fact that simulation
-runs at 10 hz.
+at time step t. The constant 1 / 10 is due the fact that simulation
+runs at 10 hz. v_t is bounded within [-5,5], i.e.,
+-5 <= v_t <= 5.
 
 4. The acceleration you can apply to the autonomous car is a real number
 between [-10, 10].
