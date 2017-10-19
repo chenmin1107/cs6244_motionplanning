@@ -83,9 +83,9 @@ updated at every 0.1s.
 
 3. The acceleration model of the autonomous car in simulation: 
 
-v_t+1 = v_t + a_(t+1) * DT (velocity update)
+v_(t+1) = v_t + a_(t+1) * DT (velocity update)
 
-y_t+1 = y_t + v_(t+1) * DT (position update)
+y_(t+1) = y_t + v_(t+1) * DT (position update)
 
 where v_t, v_(t+1) is the velocity of the autonomous car at time step t and t+1. 
 a_(t+1) is the acceleration at time step t+1. 
