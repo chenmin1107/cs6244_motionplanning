@@ -82,6 +82,7 @@ The ros stage simulator runs at 10 hz, which means the velocity gets
 updated at every 0.1s.
 
 3. The dynamic model of the autonomous car in simulation: 
+
 v_t+1 = v_t + a_t+1 * DT (velocity update)
 
 y_t+1 = y_t + v_t+1 * DT (position update)
