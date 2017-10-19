@@ -81,15 +81,15 @@ this is impossible in simulation, which is discrete in time.
 The ros stage simulator runs at 10 hz, which means the velocity gets
 updated at every 0.1s.
 
-3. The dynamic model of the autonomous car in simulation: 
+3. The acceleration model of the autonomous car in simulation: 
 
-v_t+1 = v_t + a_t+1 * DT (velocity update)
+v_t+1 = v_t + a_(t+1) * DT (velocity update)
 
-y_t+1 = y_t + v_t+1 * DT (position update)
+y_t+1 = y_t + v_(t+1) * DT (position update)
 
-where v_t, v_t+1 is the velocity of the autonomous car at time step t and t+1. 
+where v_t, v_(t+1) is the velocity of the autonomous car at time step t and t+1. 
 a_t+1 is the acceleration at time step t+1. 
-y_t, y_t+1 is the y coordinate of the autonomous car at time t and t+1.
+y_t, y_(t+1) is the y coordinate of the autonomous car at time t and t+1.
 The constant DT = 1 / 10 is due the fact that simulation
 runs at 10 hz. Note that v_t is bounded within [-5,5], i.e.,
 -5 <= v_t <= 5. And this velocity bound only applies to the autonomous car.
