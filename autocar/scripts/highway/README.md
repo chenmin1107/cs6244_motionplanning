@@ -88,7 +88,7 @@ v_t+1 = v_t + a_(t+1) * DT (velocity update)
 y_t+1 = y_t + v_(t+1) * DT (position update)
 
 where v_t, v_(t+1) is the velocity of the autonomous car at time step t and t+1. 
-a_t+1 is the acceleration at time step t+1. 
+a_(t+1) is the acceleration at time step t+1. 
 y_t, y_(t+1) is the y coordinate of the autonomous car at time t and t+1.
 The constant DT = 1 / 10 is due the fact that simulation
 runs at 10 hz. Note that v_t is bounded within [-5,5], i.e.,
